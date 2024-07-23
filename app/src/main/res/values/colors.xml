@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#1A8664</color>
+    <color name="yellow">#FFD740</color>
+    <color name="grey">#BDBCBC</color>
+    <color name="red">#F44336</color>
+    <color name="bg_splash">#0071FE</color>
+=======
+>>>>>>> 8364fda373ec1fa651336adf5194c50ade6adc45
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".activitys.SettingActivity">
+  <LinearLayout
+      android:orientation="vertical"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <ImageView
+          android:id="@+id/btn_back"
+          android:src="@drawable/baseline_back_24"
+          android:layout_marginTop="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:padding="10dp"
+          android:layout_marginTop="16dp"
+          android:id="@+id/item_info"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <TextView
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:text="Thông tin cá nhân"
+              android:textSize="16sp"
+              android:textColor="@color/black"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+          <ImageView
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:src="@drawable/baseline_navigate_next_24"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+      <View
+          android:background="@color/grey"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"/>
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:padding="10dp"
+          android:id="@+id/item_replace_pass"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <TextView
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:text="Đổi mật khẩu mới"
+              android:textSize="16sp"
+              android:textColor="@color/black"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+          <ImageView
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:src="@drawable/baseline_navigate_next_24"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/custom_btn"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Đăng xuất"
+        android:id="@+id/btn_logout"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+    <FrameLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/fragment_container_setting"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

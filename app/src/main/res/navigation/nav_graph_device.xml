@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_device"
+    app:startDestination="@id/allDeviceFragment">
+
+    <fragment
+        android:id="@+id/allDeviceFragment"
+        android:name="com.example.gym_manager.fragments.AllDeviceFragment"
+        android:label="fragment_all_device"
+        tools:layout="@layout/fragment_all_device" />
+    <fragment
+        android:id="@+id/adddeviceFragment"
+        android:name="com.example.gym_manager.fragments.AddDeviceFragment"
+        android:label="fragment_add_device"
+        tools:layout="@layout/fragment_add_device" />
+    <fragment
+        android:id="@+id/fixdeviceFragment"
+        android:name="com.example.gym_manager.fragments.RepairDeviceFragment"
+        android:label="fragment_repair_device"
+        tools:layout="@layout/fragment_repair_device" />
+</navigation>

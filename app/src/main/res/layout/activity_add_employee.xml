@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activitys.AddEmployeeActivity">
+    <ImageView
+        android:src="@drawable/baseline_back_24"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:src="@drawable/imag_user_default"
+        android:layout_gravity="center"
+        android:id="@+id/image_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:hint="Nhập mã nhân viên"
+        android:id="@+id/edt_id_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Nhập họ tên nhân viên"
+        android:id="@+id/edt_name_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Nhập địa chỉ nhân viên"
+        android:id="@+id/edt_address_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:inputType="phone"
+        android:hint="Nhập số điện thoại nhân viên"
+        android:id="@+id/edt_phone_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Nhập chức vụ nhân viên"
+        android:id="@+id/edt_role_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Nhập lương nhân viên"
+        android:inputType="number"
+        android:id="@+id/edt_salary_employee"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/green"
+        android:id="@+id/btn_save"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/custom_btn"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="50dp">
+        <TextView
+            android:text="Lưu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            android:id="@+id/tv_btn"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ProgressBar
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:indeterminateTint="@color/white"
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".activitys.AddMemberActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/layout_title"
+        android:background="@color/green"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="11dp"
+            android:layout_height="7dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:text="Thêm thành viên"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@drawable/img"
+            app:civ_border_width="2dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_avatar"
+            android:layout_gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Họ và tên"
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Địa chỉ"
+            android:id="@+id/edt_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Số điện thoại"
+            android:id="@+id/edt_phone"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Ngày sinh"
+            android:inputType="datetime"
+            android:id="@+id/edt_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Giới tính"
+            android:id="@+id/edt_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Chiều cao"
+            android:inputType="number"
+            android:id="@+id/edt_hight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_marginHorizontal="30dp"
+            android:hint="Cân nặng"
+            android:inputType="number"
+            android:id="@+id/edt_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginHorizontal="30dp"
+            android:hint="Chọn ngày bắt đầu"
+            android:inputType="datetime"
+            android:textSize="18sp"
+            android:id="@+id/edt_first_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginHorizontal="30dp"
+            android:hint="Chọn ngày kết thúc"
+            android:textSize="18sp"
+            android:inputType="datetime"
+            android:id="@+id/edt_last_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Thanh toán tiền mặt"
+            android:layout_marginStart="30dp"
+            android:textStyle="italic"
+            android:textColor="#40C4FF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/radio_trainer"
+                android:layout_marginStart="10dp"
+                android:text="Đã từng tập gym"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/radio_person"
+                android:layout_marginStart="30dp"
+                android:text="Người mới"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginHorizontal="30dp"
+            android:id="@+id/btn_save"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Lưu"
+                android:id="@+id/label_btn"
+                android:fontFamily="@font/poppins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/animationLoading"
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:layout_height="30dp"
+                app:lottie_rawRes="@raw/loading_animation"
+                app:lottie_autoPlay="true"
+                app:lottie_colorFilter="@color/white"
+                app:lottie_loop="true"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

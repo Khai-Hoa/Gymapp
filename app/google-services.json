@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "779827668035",
+    "firebase_url": "https://gymmanager-efbb8-default-rtdb.firebaseio.com",
+    "project_id": "gymmanager-efbb8",
+    "storage_bucket": "gymmanager-efbb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779827668035:android:bf85d9b2e604ce2c1a20f6",
+        "android_client_info": {
+          "package_name": "com.example.gym_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRd1vbyk2fN0IyknKjgnBjT-48h47OXJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

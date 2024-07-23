@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/allDeviceFragment"
+        android:title="Dụng cụ"
+        android:icon="@drawable/baseline_devices_all_24"/>
+    <item android:id="@+id/adddeviceFragment"
+        android:title=""
+        android:icon="@drawable/baseline_add_circle_24"/>
+    <item android:id="@+id/fixdeviceFragment"
+        android:title="Bảo trì"
+        android:icon="@drawable/baseline_fix_24"/>
+
+</menu>

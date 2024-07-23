@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">YourAppName</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="email_hint">Nhập email</string>
+    <string name="password_hint">Nhập mật khẩu</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="no_account">Chưa có tài khoản?</string>
+    <string name="sign_up">Đăng ký</string>
+</resources>
