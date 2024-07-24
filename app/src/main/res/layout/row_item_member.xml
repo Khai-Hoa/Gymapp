@@ -7,111 +7,150 @@
     android:layout_margin="2dp"
     android:padding="10dp"
     android:layout_height="wrap_content">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <!-- Existing elements -->
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/img_avatar"
-            android:src="@drawable/imag_user_default"
             android:layout_width="70dp"
-            android:layout_height="70dp"/>
-        <ImageView
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/imag_user_default"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/baseline_delete_24"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/iv_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/edt_delete"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/baseline_delete_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:text="Name"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/img_avatar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textStyle="bold"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="Hoc vien"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/black"
             android:textSize="16sp"
-            android:textColor="@color/yellow"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_avatar" />
+
+        <TextView
             android:id="@+id/tv_role"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="Q9"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_role"
+            android:text="Hoc vien"
+            android:textColor="@color/yellow"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <TextView
             android:id="@+id/tv_address"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="0909900099"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_address"
+            android:text="Q9"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_role" />
+
+        <TextView
             android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="Height:171 cm"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_phone"
+            android:text="0909900099"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+        <TextView
             android:id="@+id/tv_height"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="Weight:56kg"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_height"
+            android:text="Height:171 cm"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+
+        <TextView
             android:id="@+id/tv_weight"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="Trang thai:con tap"
-            android:textSize="16sp"
-            android:textColor="@color/green"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_weight"
+            android:text="Weight:56kg"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_height" />
+
+        <TextView
             android:id="@+id/tv_status"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Trang thai:con tap"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_weight" />
 
+        <!-- New elements for additional details -->
+        <TextView
+            android:id="@+id/tv_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Start Date: 01/01/2024"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_status" />
 
+        <TextView
+            android:id="@+id/tv_months_registered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Months Registered: 6"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_start_date" />
+
+        <TextView
+            android:id="@+id/tv_amount_paid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Amount Paid: $500"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_months_registered" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

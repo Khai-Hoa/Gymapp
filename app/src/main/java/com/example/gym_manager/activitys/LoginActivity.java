@@ -48,6 +48,11 @@ public class LoginActivity extends AppCompatActivity {
             signinAccount(user);
         });
 
+        binding.tvForgotpass.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, ForgotPassActivity.class));
+            finish();
+        });
+
         binding.tvSignup.setOnClickListener(v->{
             startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
         });

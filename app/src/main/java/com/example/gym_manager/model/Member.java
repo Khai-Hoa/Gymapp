@@ -10,17 +10,19 @@ public class Member {
     private String sex;
     private String height;
     private String weight;
-    private String firstDay;
-    private String lastDay;
-    private Boolean isActive;
+    private String startDay;
+    private int monthsRegistered; // Số tháng đăng ký
+    private boolean isActive;
     private String role;
-    private Double payment;
+    private double amountPaid; // Số tiền đã trả
+    private String endDay;
 
-
+    // Constructor không tham số
     public Member() {
     }
 
-    public Member(String avatar, String name, String address, String phone, String birthday, String sex, String height, String weight, String firstDay, String lastDay, Boolean isActive, String role, Double payment) {
+    // Constructor với tham số
+    public Member(String avatar, String name, String address, String phone, String birthday, String sex, String height, String weight, String startDay, int monthsRegistered, boolean isActive, String role, double amountPaid, String endDay) {
         this.avatar = avatar;
         this.name = name;
         this.address = address;
@@ -29,13 +31,15 @@ public class Member {
         this.sex = sex;
         this.height = height;
         this.weight = weight;
-        this.firstDay = firstDay;
-        this.lastDay = lastDay;
+        this.startDay = startDay;
+        this.monthsRegistered = monthsRegistered;
         this.isActive = isActive;
         this.role = role;
-        this.payment = payment;
+        this.amountPaid = amountPaid;
+        this.endDay = endDay;
     }
 
+    // Các phương thức getter và setter
     public String getMemberId() {
         return memberId;
     }
@@ -108,27 +112,27 @@ public class Member {
         this.weight = weight;
     }
 
-    public String getFirstDay() {
-        return firstDay;
+    public String getStartDay() {
+        return startDay;
     }
 
-    public void setFirstDay(String firstDay) {
-        this.firstDay = firstDay;
+    public void setStartDay(String startDay) {
+        this.startDay = startDay;
     }
 
-    public String getLastDay() {
-        return lastDay;
+    public int getMonthsRegistered() {
+        return monthsRegistered;
     }
 
-    public void setLastDay(String lastDay) {
-        this.lastDay = lastDay;
+    public void setMonthsRegistered(int monthsRegistered) {
+        this.monthsRegistered = monthsRegistered;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         isActive = active;
     }
 
@@ -140,11 +144,19 @@ public class Member {
         this.role = role;
     }
 
-    public Double getPayment() {
-        return payment;
+    public double getAmountPaid() {
+        return amountPaid;
     }
 
-    public void setPayment(Double payment) {
-        this.payment = payment;
+    public void setAmountPaid(double amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
+    public String getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(String endDay) {
+        this.endDay = endDay;
     }
 }

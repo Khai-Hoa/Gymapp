@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +5,8 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".activitys.AddMemberActivity">
+
+    <!-- Title Layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -14,7 +15,6 @@
         android:background="@color/green"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-
 
         <ImageView
             android:id="@+id/btn_back"
@@ -36,14 +36,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Main Layout -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_below="@id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Avatar Image -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:src="@drawable/img"
             app:civ_border_width="2dp"
@@ -52,6 +54,8 @@
             android:layout_gravity="center"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
+
+        <!-- Input Fields -->
         <EditText
             android:layout_marginHorizontal="30dp"
             android:hint="Họ và tên"
@@ -88,7 +92,7 @@
             android:layout_marginHorizontal="30dp"
             android:hint="Chiều cao"
             android:inputType="number"
-            android:id="@+id/edt_hight"
+            android:id="@+id/edt_height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
@@ -98,30 +102,33 @@
             android:id="@+id/edt_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
+
+        <!-- Start Date and Months -->
+        <EditText
             android:layout_marginHorizontal="30dp"
-            android:hint="Chọn ngày bắt đầu"
+            android:hint="Ngày bắt đầu"
             android:inputType="datetime"
-            android:textSize="18sp"
-            android:id="@+id/edt_first_day"
+            android:id="@+id/edt_start_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
+        <EditText
             android:layout_marginHorizontal="30dp"
-            android:hint="Chọn ngày kết thúc"
-            android:textSize="18sp"
-            android:inputType="datetime"
-            android:id="@+id/edt_last_day"
+            android:hint="Số tháng đăng kí"
+            android:inputType="number"
+            android:id="@+id/edt_months"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <!-- Total Payment -->
         <TextView
-            android:text="Thanh toán tiền mặt"
-            android:layout_marginStart="30dp"
-            android:textStyle="italic"
-            android:textColor="#40C4FF"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_total_payment"
+            android:layout_marginHorizontal="30dp"
+            android:text="Tổng tiền: 0 VND"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <!-- Trainer or New Person -->
         <RadioGroup
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -142,6 +149,7 @@
                 android:layout_height="wrap_content"/>
         </RadioGroup>
 
+        <!-- Save Button -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="30dp"
             android:id="@+id/btn_save"
@@ -173,11 +181,6 @@
                 app:lottie_autoPlay="true"
                 app:lottie_colorFilter="@color/white"
                 app:lottie_loop="true"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
     </LinearLayout>
-
 </RelativeLayout>

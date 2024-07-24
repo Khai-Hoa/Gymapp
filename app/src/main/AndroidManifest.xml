@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym_manager"
         tools:targetApi="31">
+
         <activity
             android:name=".activitys.ManagerDeviceActivity"
             android:exported="false" />
@@ -36,9 +40,11 @@
             android:name=".activitys.ShopActivity"
             android:exported="false" />
         <activity
+            android:name=".activitys.ForgotPassActivity"
+            android:exported="false" />
+        <activity
             android:name=".activitys.SettingActivity"
             android:exported="false" />
-
         <activity
             android:name=".activitys.SeenImageActivity"
             android:exported="false" />
@@ -57,11 +63,13 @@
         <activity
             android:name=".activitys.MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".activitys.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

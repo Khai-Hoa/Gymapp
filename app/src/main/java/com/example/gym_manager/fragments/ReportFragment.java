@@ -3,11 +3,10 @@ package com.example.gym_manager.fragments;
 import android.app.DatePickerDialog;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gym_manager.R;
-import com.example.gym_manager.activitys.HistorySellActivity;
-import com.example.gym_manager.activitys.MainActivity;
-import com.example.gym_manager.activitys.ManagerEmployeeActivity;
-import com.example.gym_manager.adapter.CartAdapter;
-import com.example.gym_manager.adapter.DeviceAdapter;
-import com.example.gym_manager.adapter.EmployeeAdapter;
 import com.example.gym_manager.database.Cart;
 import com.example.gym_manager.database.CartDatabase;
 import com.example.gym_manager.databinding.FragmentReportBinding;
-import com.example.gym_manager.listener.OnCartItemDeletedListener;
 import com.example.gym_manager.model.Device;
 import com.example.gym_manager.model.Employee;
 import com.example.gym_manager.model.Member;
@@ -44,67 +36,50 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+public class ReportFragment extends Fragment {
 
-public class ReportFragment extends Fragment{
-
- private FragmentReportBinding binding;
- private FirebaseAuth auth;
-    private CartAdapter adapter;
-    private List<Cart> cartList;
+    private FragmentReportBinding binding;
+    private FirebaseAuth auth;
     private CartDatabase cartDatabase;
     private String startDay;
     private String endDay;
-    private int mYear, mMonth, mDay, mHours, mMinute;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private DecimalFormat format = new DecimalFormat("#,###");
     private List<Member> mList = new ArrayList<>();
     private List<Employee> mListEmployee = new ArrayList<>();
-    private List<Device> mListDevice= new ArrayList<>();
-    private List<Device> mListDeviceDamaged= new ArrayList<>();
+    private List<Device> mListDevice = new ArrayList<>();
+    private List<Device> mListDeviceDamaged = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       binding = FragmentReportBinding.inflate(inflater,container,false);
-       return binding.getRoot();
+        binding = FragmentReportBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        iNit(view);
-        binding.startDay.setOnClickListener(v -> showDatePickerDialog(binding.startDay));
-        binding.endDay.setOnClickListener(v->showDatePickerDialog(binding.endDay));
+        iNit();
+        binding.edtStartDate.setOnClickListener(v -> showDatePickerDialog(binding.edtStartDate));
+        binding.edtEndDate.setOnClickListener(v -> showDatePickerDialog(binding.edtEndDate));
 
-        binding.btnFind.setOnClickListener(v->{
-            filterByCartDate(binding.startDay.getText().toString().trim(), binding.endDay.getText().toString().trim());
-
+        binding.btnSearch.setOnClickListener(v -> {
+            filterByCartDate(binding.edtStartDate.getText().toString().trim(), binding.edtEndDate.getText().toString().trim());
         });
 
-        loadMemeberFromFirebase();
+        loadMemberFromFirebase();
         loadEmployeeFromFirebase();
         loadDeviceFromServer();
         loadDeviceDamaged();
-       
 
-
-        new Thread(()->{
-            cartList = cartDatabase.cartDao().getAllCart();
-            calculateTotalSum(cartList);
-            binding.tvSum.setText(new StringBuilder().append(format.format(  calculateTotalSum(cartList))).append(" VND"));
+        new Thread(() -> {
+            List<Cart> cartList = cartDatabase.cartDao().getAllCart();
+            double totalSum = calculateTotalSum(cartList);
+            requireActivity().runOnUiThread(() -> binding.tvSum.setText(new StringBuilder().append(format.format(totalSum)).append(" VND")));
         }).start();
-
-
-
-
-
-
-
-
-
-
     }
 
     private void loadDeviceDamaged() {
@@ -114,13 +89,11 @@ public class ReportFragment extends Fragment{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mListDeviceDamaged.clear();
-                for(DataSnapshot damagedDevice : snapshot.getChildren()){
+                for (DataSnapshot damagedDevice : snapshot.getChildren()) {
                     Device device = damagedDevice.getValue(Device.class);
                     if (device != null) {
                         mListDeviceDamaged.add(device);
-
                     }
-
                 }
                 binding.tvCountDeviceHu.setText(String.valueOf(mListDeviceDamaged.size()));
                 double totalMaintenanceCost = calculateTotalMaintenanceCost(mListDeviceDamaged);
@@ -129,10 +102,9 @@ public class ReportFragment extends Fragment{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle possible errors
             }
         });
-
     }
 
     private double calculateTotalMaintenanceCost(List<Device> deviceList) {
@@ -155,7 +127,7 @@ public class ReportFragment extends Fragment{
             new Thread(() -> {
                 List<Cart> filteredCartList = cartDatabase.cartDao().getCartsBetweenDates(_startDay, _endDay);
                 double totalSum = calculateTotalSum(filteredCartList);
-                getActivity().runOnUiThread(() -> binding.tvSumDate.setText(new StringBuilder().append(format.format(totalSum)).append(" VND")));
+                requireActivity().runOnUiThread(() -> binding.tvSumDate.setText(new StringBuilder().append(format.format(totalSum)).append(" VND")));
             }).start();
         } catch (ParseException e) {
             Toast.makeText(requireContext(), "Định dạng ngày không hợp lệ", Toast.LENGTH_SHORT).show();
@@ -176,17 +148,13 @@ public class ReportFragment extends Fragment{
 
         datePickerDialog.show();
     }
-    private double calculateTotalSum(List<Cart> cartList) {
 
+    private double calculateTotalSum(List<Cart> cartList) {
         double total = 0;
         for (Cart cart : cartList) {
             total += cart.getTotalPrice();
         }
-
-        // Update UI on the main thread
-
         return total;
-
     }
 
     private void loadDeviceFromServer() {
@@ -196,30 +164,27 @@ public class ReportFragment extends Fragment{
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         mListDevice.clear();
-                        if(snapshot.exists()){
-                            for(DataSnapshot deviceSnapshot : snapshot.getChildren()){
+                        if (snapshot.exists()) {
+                            for (DataSnapshot deviceSnapshot : snapshot.getChildren()) {
                                 Device device = deviceSnapshot.getValue(Device.class);
-                                if(device != null){
+                                if (device != null) {
                                     mListDevice.add(device);
                                 }
                             }
-                          binding.tvCountDevice.setText(new StringBuilder().append(mListDevice.size()));
-                            binding.swiplayout.setRefreshing(false);
+                            binding.tvCountDeviceHu.setText(String.valueOf(mListDevice.size()));
+                        } else {
+                            binding.tvCountDeviceHu.setText("0");
                         }
-                        else{
-                            binding.swiplayout.setRefreshing(false);
-                            binding.tvCountDevice.setText(new StringBuilder().append(0));
-                        }
+                        binding.swiplayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         binding.swiplayout.setRefreshing(false);
-
                     }
                 });
-
     }
+
     private void loadEmployeeFromFirebase() {
         binding.swiplayout.setRefreshing(true);
         FirebaseDatabase.getInstance().getReference("employees")
@@ -227,75 +192,68 @@ public class ReportFragment extends Fragment{
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         mListEmployee.clear();
-                        if(snapshot.exists()){
-                            for(DataSnapshot employeeSnapshot : snapshot.getChildren()){
+                        if (snapshot.exists()) {
+                            for (DataSnapshot employeeSnapshot : snapshot.getChildren()) {
                                 Employee employee = employeeSnapshot.getValue(Employee.class);
-                                if(employee != null){
+                                if (employee != null) {
                                     mListEmployee.add(employee);
                                 }
                             }
-                            binding.tvCountEmployee.setText(new StringBuilder().append(mListEmployee.size()));
-                            binding.swiplayout.setRefreshing(false);
+                            binding.tvCountEmployee.setText(String.valueOf(mListEmployee.size()));
+                        } else {
+                            binding.tvCountEmployee.setText("0");
                         }
-                        else{
-                            binding.swiplayout.setRefreshing(false);
-                            binding.tvCountEmployee.setText(new StringBuilder().append(0));
-                        }
+                        binding.swiplayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         binding.swiplayout.setRefreshing(false);
-
-
                     }
                 });
-
     }
 
-    private void loadMemeberFromFirebase() {
+    private void loadMemberFromFirebase() {
         binding.swiplayout.setRefreshing(true);
         FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             FirebaseDatabase.getInstance().getReference("members")
                     .child(currentUser.getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             mList.clear();
-                            if(snapshot.exists()){
-                                for(DataSnapshot memberSnapshot : snapshot.getChildren()){
+                            double totalMemberRevenue = 0; // Variable to store total revenue
+                            if (snapshot.exists()) {
+                                for (DataSnapshot memberSnapshot : snapshot.getChildren()) {
                                     Member member = memberSnapshot.getValue(Member.class);
-                                    if(member != null){
+                                    if (member != null) {
                                         mList.add(member);
+                                        // Sử dụng phương thức hiện tại để lấy doanh thu
+                                        totalMemberRevenue += member.getAmountPaid(); // Hoặc phương thức thực tế của bạn
                                     }
                                 }
-                                binding.tvCountMember.setText(new StringBuilder().append(mList.size()));
-                                binding.swiplayout.setRefreshing(false);
-
+                                Log.d("ReportFragment", "Total Member Revenue: " + totalMemberRevenue);
+                                binding.tvCountMember.setText(String.valueOf(mList.size()));
+                                binding.tvSumDate.setText(new StringBuilder().append(format.format(totalMemberRevenue)).append(" VND")); // Update this line to show the total revenue
+                            } else {
+                                binding.tvCountMember.setText("0");
+                                binding.tvSumDate.setText("0 VND"); // Set to 0 if no members
                             }
-                            else{
-                                binding.swiplayout.setRefreshing(false);
-                                binding.tvCountMember.setText(new StringBuilder().append(0));
-                            }
-
-
-
+                            binding.swiplayout.setRefreshing(false);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             binding.swiplayout.setRefreshing(false);
-
                         }
                     });
         }
     }
 
-    private void iNit(View view) {
+
+    private void iNit() {
         cartDatabase = CartDatabase.getDatabase(requireContext());
         auth = FirebaseAuth.getInstance();
     }
-
-
 }
